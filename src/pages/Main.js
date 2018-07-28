@@ -43,14 +43,12 @@ class Main extends Component {
       const res = await api.get(`/repos/${this.state.repositoryInput}/issues?state=all`);
       this.setState({
         issuesArr: [...this.state.issuesArr, res.data],
-        repositoryInput: '',
         selectedRepo: repository,
       });
       console.log('pegando o array de issues');
       console.log(res);
 
       this.setState({
-        repositoryInput: '',
         selectedRepo: repository,
       });
     } catch (err) {

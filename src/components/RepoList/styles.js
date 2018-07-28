@@ -30,4 +30,5 @@ export const Repo = styled.div`
   align-content: center;
   margin-bottom: 20px;
   background: url(${seta}) no-repeat 260px 7px;
+  cursor: pointer;
 `;

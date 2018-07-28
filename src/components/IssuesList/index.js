@@ -4,7 +4,7 @@ import { Container, Box } from './styles';
 const IssuesList = ({ issuesArr }) => (
   <Container>
     {issuesArr.map(issue => (
-      <Box>
+      <Box key={issue.id}>
         <p>{issue.id}</p>
       </Box>
     ))}
