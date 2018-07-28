@@ -7,7 +7,16 @@ import api from '../services/api';
 class Main extends Component {
   state = {
     repositoryInput: '',
+    selectedRepo: {
+      id: 0,
+      name: '',
+      owner: {
+        avatar_url: '',
+        login: '',
+      },
+    },
     repositories: [],
+    issuesArr: [],
   };
 
   handleChangeInput = (e) => {
@@ -22,17 +31,31 @@ class Main extends Component {
     try {
       const response = await api.get(`/repos/${this.state.repositoryInput}`);
       this.setState({
-        repositoryInput: '',
         repositories: [...this.state.repositories, response.data],
       });
-      console.log(response);
     } catch (err) {
       console.log(err);
     }
   };
 
-  handleGetInfo = (id) => {
-    console.log(id);
+  handleGetInfo = async (repository) => {
+    try {
+      const res = await api.get(`/repos/${this.state.repositoryInput}/issues?state=all`);
+      this.setState({
+        issuesArr: [...this.state.issuesArr, res.data],
+        repositoryInput: '',
+        selectedRepo: repository,
+      });
+      console.log('pegando o array de issues');
+      console.log(res);
+
+      this.setState({
+        repositoryInput: '',
+        selectedRepo: repository,
+      });
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   render() {
@@ -45,7 +68,11 @@ class Main extends Component {
           handleAddRepository={this.handleAddRepository}
           handleGetInfo={this.handleGetInfo}
         />
-        <Issues repositories={this.state.repositories} />
+        <Issues
+          repositories={this.state.repositories}
+          selectedRepo={this.state.selectedRepo}
+          issuesArr={this.state.issuesArr}
+        />
       </Container>
     );
   }

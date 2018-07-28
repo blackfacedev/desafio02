@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import seta from '../../assets/seta.png';
 
 export const Container = styled.div`
   display: flex;
@@ -28,4 +29,5 @@ export const Repo = styled.div`
   flex-direction: row;
   align-content: center;
   margin-bottom: 20px;
+  background: url(${seta}) no-repeat 260px 7px;
 `;

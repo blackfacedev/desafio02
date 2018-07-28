@@ -5,7 +5,7 @@ import { Container, Repo } from './styles';
 const RepoList = ({ repositories, handleGetInfo }) => (
   <Container>
     {repositories.map(repository => (
-      <Repo key={repository.id} onClick={handleGetInfo(repository.id)}>
+      <Repo key={repository.id} onClick={() => handleGetInfo(repository)}>
         <img src={repository.owner.avatar_url} alt={repository.owner.login} />
         <div>
           <strong>{repository.name}</strong>

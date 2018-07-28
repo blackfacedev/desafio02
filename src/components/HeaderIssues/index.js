@@ -1,28 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Container } from './styles';
 
-const HeaderIssues = ({ repositories }) => (
+const HeaderIssues = ({ selectedRepo }) => (
   <Container>
-    <img src="https://avatars3.githubusercontent.com/u/69631?v=4" alt="avatar" />
+    <img src={selectedRepo.owner.avatar_url} alt={selectedRepo.owner.login} />
     <div>
-      <strong>Facebook</strong>
-      <small>react</small>
+      <strong>{selectedRepo.name}</strong>
+      <small>{selectedRepo.owner.login}</small>
     </div>
   </Container>
 );
-
-HeaderIssues.propTypes = {
-  repositories: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number,
-      name: PropTypes.string,
-      owner: PropTypes.shape({
-        avatar_url: PropTypes.string,
-        login: PropTypes.string,
-      }),
-    }),
-  ).isRequired,
-};
 
 export default HeaderIssues;

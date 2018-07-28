@@ -1,11 +1,12 @@
 import React from 'react';
 import HeaderIssues from '../HeaderIssues';
+import IssuesList from '../IssuesList';
 import { Container } from './styles';
 
-const Issues = () => (
+const Issues = ({ selectedRepo, issuesArr }) => (
   <Container>
-    <HeaderIssues />
-    <h1>issues</h1>
+    <HeaderIssues selectedRepo={selectedRepo} />
+    <IssuesList issuesArr={issuesArr} />
   </Container>
 );
 
