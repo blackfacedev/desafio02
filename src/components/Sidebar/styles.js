@@ -17,8 +17,8 @@ export const Form = styled.form`
     flex: 1;
     height: 40px;
     padding: 0 20px;
-    background: white;
-    border: 1px solid #ccc;
+    background: #eee;
+    border: 0;
     border-radius: 3px;
     color: #444;
     font-size: 16px;
@@ -28,7 +28,7 @@ export const Form = styled.form`
     height: 40px;
     padding: 0 20px;
     margin-left: 10px;
-    background: #63f5b0;
+    background: #59ea9a;
     color: white;
     border: 0;
     font-size: 18px;

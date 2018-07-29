@@ -6,6 +6,7 @@ import api from '../services/api';
 
 class Main extends Component {
   state = {
+    loading: false,
     repositoryInput: '',
     selectedRepo: {
       id: 0,
@@ -28,6 +29,10 @@ class Main extends Component {
   handleAddRepository = async (e) => {
     e.preventDefault();
 
+    this.setState({
+      loading: true,
+    });
+
     try {
       const response = await api.get(`/repos/${this.state.repositoryInput}`);
       this.setState({
@@ -35,6 +40,10 @@ class Main extends Component {
       });
     } catch (err) {
       console.log(err);
+    } finally {
+      this.setState({
+        loading: false,
+      });
     }
   };
 
@@ -46,7 +55,7 @@ class Main extends Component {
         selectedRepo: repository,
       });
       console.log('pegando o array de issues');
-      console.log(res);
+      console.log(this.state.issuesArr);
 
       this.setState({
         selectedRepo: repository,
@@ -65,6 +74,7 @@ class Main extends Component {
           handleChangeInput={this.handleChangeInput}
           handleAddRepository={this.handleAddRepository}
           handleGetInfo={this.handleGetInfo}
+          loading={this.state.loading}
         />
         <Issues
           repositories={this.state.repositories}

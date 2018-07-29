@@ -8,6 +8,7 @@ const Sidebar = ({
   handleChangeInput,
   handleAddRepository,
   handleGetInfo,
+  loading,
 }) => (
   <Container>
     <Form onSubmit={handleAddRepository}>
@@ -17,7 +18,9 @@ const Sidebar = ({
         value={repositoryInput}
         onChange={handleChangeInput}
       />
-      <button type="submit">OK</button>
+      <button type="submit">
+        {loading ? <i className="fa fa-spinner fa-pulse" /> : <i className="fa fa-plus" />}
+      </button>
     </Form>
     <RepoList repositories={repositories} handleGetInfo={handleGetInfo} />
   </Container>

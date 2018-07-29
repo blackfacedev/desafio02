@@ -1,4 +1,5 @@
 import { injectGlobal } from 'styled-components';
+import 'font-awesome/css/font-awesome.css';
 
 injectGlobal`
   * {
@@ -9,7 +10,7 @@ injectGlobal`
   }
 
   body {
-    background: #f6f6f6;
+    background: #F5F5F5;
     text-rendering: optimizeLegibility !important;
     -webkit-fint-smoothing: antialiased !important;
     font-family: sans-serif;
